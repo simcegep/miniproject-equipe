@@ -13,3 +13,6 @@
 # faire print la case n'est pas vide if il entre une valeur dans une case préfait
 # faire print
 
+#changement de chiffre en cas d'erreur :
+# faire liste de case qui son in touchable / faire une copie de la crille d'origine
+# comparéré liste ou dictionnaire avec la grille qui a été modifier pour valider si la case peut etre modifier

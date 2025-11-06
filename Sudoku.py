@@ -1,7 +1,7 @@
 
 
 #fonction afficher la grille selon difficulté
-def choisir_difficulte():
+def choisir_difficulte(): # Principalement Simon, petite modification Marc-Antoine
     print("1. Facile")
     print("2. Moyen")
     print("3. Difficile")
@@ -9,22 +9,32 @@ def choisir_difficulte():
 
     choix_utilisateur = int(input(""))
     if choix_utilisateur == 1:
-        print(grille_facile)
-        return grille_facile
+        grille = grille_facile
+        return grille
+    if grille == grille_facile:
+        solution_grille = grille_facile_solution
+
     elif choix_utilisateur == 2:
-        print(grille_moyen)
-        return grille_moyen
+        grille = grille_moyen
+        return grille
+    elif grille == grille_moyen:
+        solution_grille = grille_moyen_solution
+
     elif choix_utilisateur == 3:
-        print(grille_difficile)
-        return grille_difficile
+        grille = grille_difficile
+        return grille
+    elif grille == grille_difficile:
+        solution_grille = grille_difficile_solution
+
     else:
         print("Choix invalide! Niveau facile est par défaut")
-        print(grille_facile)
-        return grille_facile
+        #print(grille_facile)
+        grille = grille_facile
+        return grille
 
 # print (choisir_difficulte())
 
-def valide(grille, ligne, colonne, chiffre):
+def valide(grille, ligne, colonne, chiffre): # Marc-Antoine
     """
 
     :param grille:
@@ -35,12 +45,13 @@ def valide(grille, ligne, colonne, chiffre):
     """
 
     # vérifie la ligne
-    if chiffre in grille[ligne]:
-        return False
+    for i in grille[ligne]:
+        if i == chiffre:
+            return False
 
     # vérifie la colonne
-    for i in range(9):
-        if grille[i][colonne] == chiffre:
+    for j in range(9):
+        if grille[j][colonne] == chiffre:
             return False
 
     # Vérifie le carré 3x3
@@ -53,9 +64,9 @@ def valide(grille, ligne, colonne, chiffre):
     return True
 
 
-def placement_chiffres(grille, ligne, colonne, chiffre):
+def placement_chiffres(grille, ligne, colonne, chiffre): # Marc-Antoine
    """
-
+    Cette fonction prend la grille et le chiffre choisit et son emplacement
    :param grille:
    :param ligne:
    :param colonne:
@@ -68,14 +79,31 @@ def placement_chiffres(grille, ligne, colonne, chiffre):
    if valide(grille, ligne, colonne, chiffre):
        grille[ligne][colonne] = chiffre
        print("Le chiffre est placé avec succès! ")
+       return True
    else:
-       print("Le placement est invalide selon les règle du Sudoku. ")
+       print("Le placement est invalide selon les règles du Sudoku. ")
        return False
+
+def afficher_grille(grille): # Marc-Antoine
+    """
+
+    :param grille:
+    :return:
+    """
+    for i in range(9):
+        if i % 3 == 0 and i != 0:
+            print("-" * 21)
+        for j in range(9):
+            if j % 3 == 0 and j != 0:
+                print("|", end=" ")
+            val = grille[i][j]
+            print(val if val != "_" else "_", end=" ")
+        print()
 
 
 
 if __name__ == '__main__':
-    grille_facile = [
+    grille_facile = [                                                       #simon
         [5, 3, "_", "_", 7, "_", "_", "_", "_"],
         [6, "_", "_", 1, 9, 5, "_", "_", "_"],
         ["_", 9, 8, "_", "_", "_", "_", 6, "_"],
@@ -150,8 +178,9 @@ grille_difficile_solution = [
 grille = choisir_difficulte()
 afficher_grille(grille)
 
-
-chiffre = int(input("Quelle chiffre vouller vous rajouter ? "))
-ligne = int(input("quelle est la rangé(de gauche à droite, 0 à 8) que vous voullez modifier ? "))
-colonne = int(input("quelle est la colonne(de en haut à en bas, 0 à 8) que vous voullez modifier ? "))
-print(afficher_grille(grille))
+while (grille) != solution_grille:
+    chiffre = int(input("Quelle chiffre vouller vous rajouter ? "))
+    ligne = int(input("quelle est la rangé(de gauche à droite, 0 à 8) que vous voullez modifier ? "))
+    colonne = int(input("quelle est la colonne(de en haut à en bas, 0 à 8) que vous voullez modifier ? "))
+    placement_chiffres(grille, ligne, colonne, chiffre)
+    print(afficher_grille(grille))
