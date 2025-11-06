@@ -2,56 +2,14 @@
 # message ( Bienvenue au jeu de Sudoku)
 # choix de diff, facile, moyen, dure
 # créer grille
-# choix (boucle): rentrer un chiffre, enter pour afficher erreurs
+# faire un grille corrigée/complète pour chaque niveau de diff
+# Fonctions
+# afficher grille, choix difficulté, validation du chiffre( collone, ligne, chiffre),
+# choix (boucle): rentrer une ligne, rentrer une collone, rentrer un chiffre, rentrer enter pour indiqué une erreur
+#fonction remplacer un chiffre dans grille selon ligne/collone
+    # afficher erreurs si valuer pas 1 à 9
 
-# afficher grille facile, moyen, dure
-grille_facile = [
-    [5, 3, "?", "?", 7, "?", "?", "?", "?"],
-    [6, "?", "?", 1, 9, 5, "?", "?", "?"],
-    ["?", 9, 8, "?", "?", "?", "?", 6, "?"],
-    [8, "?", "?", "?", 6, "?", "?", "?", 3],
-    [4, "?", "?", 8, "?", 3, "?", "?", 1],
-    [7, "?", "?", "?", 2, "?", "?", "?", 6],
-    ["?", 6, "?", "?", "?", "?", 2, 8, "?"],
-    ["?", "?", "?", 4, 1, 9, "?", "?", 5],
-    ["?", "?", "?", "?", 8, "?", "?", 7, 9]
-]
-##
-grille_moyen = [
-    [9, "?", "?", "?", 2, "?", "?", 7, "?"],
-    ["?", 6, "?", 9, "?", "?", "?", "?", 3],
-    ["?", "?", 3, "?", "?", 5, 9, "?", "?"],
-    ["?", "?", 5, "?", "?", 9, 1, "?", "?"],
-    ["?", 9, "?", 1, "?", 6, "?", 2, "?"],
-    ["?", "?", 6, 2, "?", "?", 4, "?", "?"],
-    ["?", "?", 9, 6, "?", "?", 3, "?", "?"],
-    [8, "?", "?", "?", "?", 7, "?", 5, "?"],
-    ["?", 3, "?", "?", 9, "?", "?", "?", 6]
-]
-##
-grille_difficile = [
-    ["?", "?", 5, 3, "?", "?", "?", "?", "?"],
-    [8, "?", "?", "?", "?", "?", "?", 2, "?"],
-    ["?", 7, "?", "?", 1, "?", 5, "?", "?"],
-    ["?", "?", 3, 2, "?", "?", "?", 8, "?"],
-    ["?", 6, "?", 5, "?", "?", "?", "?", 9],
-    ["?", "?", 4, "?", "?", "?", "?", 3, "?"],
-    [4, "?", "?", "?", "?", 5, 3, "?", "?"],
-    ["?", 1, "?", "?", 7, "?", "?", "?", 6],
-    ["?", "?", "?", "?", "?", 9, 7, "?", "?"]
-]
-
-#Personne A:crée la grille
-#Personne B:obtenir les valeurs
-#Personne C:faire placer les valeurs
-
-#faire une Grille 9x9 level facile = tel nombre de chiffre affiche
-
-
-
-#
-#identifier fonction
-#prevoir date pseudo code ,fonction,test unitaire
-
-
+# faire print la ligne/collone à changer si erreur
+# faire print la case n'est pas vide if il entre une valeur dans une case préfait
+# faire print
 
