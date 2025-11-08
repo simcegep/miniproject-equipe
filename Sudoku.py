@@ -5,38 +5,43 @@ def choisir_difficulte(): # Principalement Simon, petite modification Marc-Antoi
     print("1. Facile")
     print("2. Moyen")
     print("3. Difficile")
-    print("Choisissez une difficulté:")
+    print("Choisissez une difficulté: ")
 
     choix_utilisateur = int(input(""))
     if choix_utilisateur == 1:
         grille = grille_facile
-        return grille
-    if grille == grille_facile:
-        solution_grille = grille_facile_solution
+        grille_solution = grille_facile_solution
+        #if grille == grille_facile:
+            #solution_grille = grille_facile_solution
+        return grille, grille_solution
 
-    elif choix_utilisateur == 2:
+    if choix_utilisateur == 2:
         grille = grille_moyen
-        return grille
-    elif grille == grille_moyen:
-        solution_grille = grille_moyen_solution
+        grille_solution = grille_moyen_solution
+        #if grille == grille_moyen:
+            #solution_grille = grille_moyen_solution
+        return grille, grille_solution
 
-    elif choix_utilisateur == 3:
+    if choix_utilisateur == 3:
         grille = grille_difficile
-        return grille
-    elif grille == grille_difficile:
-        solution_grille = grille_difficile_solution
+        grille_solution = grille_difficile_solution
+        #if grille == grille_difficile:
+            #solution_grille = grille_difficile_solution
+        return grille, grille_solution
 
     else:
         print("Choix invalide! Niveau facile est par défaut")
         #print(grille_facile)
         grille = grille_facile
-        return grille
+        if grille == grille_facile:
+            solution_grille = grille_facile_solution
+        return grille, solution_grille
 
 # print (choisir_difficulte())
 
 def valide(grille, ligne, colonne, chiffre): # Marc-Antoine
     """
-
+    Vérifie si le placement d'un chiffre est valide selon les règles du sudoku
     :param grille:
     :param ligne:
     :param colonne:
@@ -44,17 +49,17 @@ def valide(grille, ligne, colonne, chiffre): # Marc-Antoine
     :return:
     """
 
-    # vérifie la ligne
+    # vérifie la ligne si le chiffre est déjà là ce placement est interdie
     for i in grille[ligne]:
         if i == chiffre:
             return False
 
-    # vérifie la colonne
+    # vérifie la colonne si le chiffre est déjà présent si présen le placement est interdie
     for j in range(9):
         if grille[j][colonne] == chiffre:
             return False
 
-    # Vérifie le carré 3x3
+    # Vérifie le carré 3x3 si le chiffre est déjà présent si présent le placement est interdie
     debut_ligne = (ligne // 3) * 3
     debut_colonne = (colonne // 3) * 3
     for i in range(3):
@@ -162,7 +167,7 @@ if __name__ == '__main__':
         ["_", "_", 4, "_", "_", "_", "_", 3, "_"],
         ["_", "_", "_", "_", "_", 9, 7, "_", "_"]
     ]
-grille_difficile_solution = [
+    grille_difficile_solution = [
     [1, 4, 5, 3, 2, 7, 6, 9, 8],
     [8, 3, 9, 6, 5, 4, 1, 2, 7],
     [6, 7, 2, 9, 1, 8, 5, 4, 3],
@@ -172,15 +177,66 @@ grille_difficile_solution = [
     [3, 6, 7, 5, 4, 2, 2, 8, 9],
     [9, 8, 4, 7, 6, 1, 2, 3, 5],
     [5, 2, 1, 8, 3, 9, 7, 6, 1]
-]
+    ]
 
 
-grille = choisir_difficulte()
-afficher_grille(grille)
+    grille, grille_solution = choisir_difficulte()
+    afficher_grille(grille)
 
-while (grille) != solution_grille:
-    chiffre = int(input("Quelle chiffre vouller vous rajouter ? "))
-    ligne = int(input("quelle est la rangé(de gauche à droite, 0 à 8) que vous voullez modifier ? "))
-    colonne = int(input("quelle est la colonne(de en haut à en bas, 0 à 8) que vous voullez modifier ? "))
-    placement_chiffres(grille, ligne, colonne, chiffre)
-    print(afficher_grille(grille))
+    while True:
+        choix = input("Voulez-vous entrer un chiffre ? (Oui/Non)(tapez 'q' pour quitter): ").lower()
+
+
+        # Quitter la partie
+        if choix == "q":
+            print("fin de la partie.")
+            if grille == grille_solution:
+                print("Bravo! vous avez réussi")
+            else:
+                print("Vous n'avez pas terminer le Sudoku. Voici la solution.")
+                afficher_grille(grille_solution)
+                break
+
+        # Demande d'indice
+        if choix == "non":
+            indice = input("Voulez vous un indice ? (Oui/Non): ").lower()
+            if indice == "oui":
+                print("L'indice va etre ici juste la fonction na pas encore été créé")
+            else:
+                print("D'accord, continuez !")
+            continue
+
+        elif choix == "oui":
+            try:
+                chiffre = int(input("Quel chiffre voulez-vous ajouter (1 à 9) ? "))
+                ligne = int(input("Quelle ligne (0 à 8) voulez-vous modifier ? "))
+                colonne = int(input("Quelle colonne (0 à 8) voulez-vous modifier ? "))
+
+                if chiffre < 1 or chiffre > 9:
+                    print("Le chiffre doit être entre 1 et 9.")
+                    continue
+
+                placement_chiffres(grille, ligne, colonne, chiffre)
+                afficher_grille(grille)
+
+                # Vérifie si la grille est complète et correcte
+                if grille == grille_solution:
+                    print("Bravo! Vous avez réussi!")
+                    break
+
+
+            except ValueError:
+                print("Erreur : veuillez entrer un nombre valide.")
+            except IndexError:
+                print("Erreur : les coordonnées doivent être entre 0 et 8.")
+    else:
+        print("Réponse invalide. Tapez 'oui', 'non' ou 'q'. ")
+
+
+
+    '''while (grille) != solution_grille:
+        chiffre = int(input("Quelle chiffre vouler vous rajouter ? "))
+        ligne = int(input("quelle est la rangé(de gauche à droite, 0 à 8) que vous voulez modifier ? "))
+        colonne = int(input("quelle est la colonne(de en haut à en bas, 0 à 8) que vous voulez modifier ? "))
+        placement_chiffres(grille, ligne, colonne, chiffre)
+        print(afficher_grille(grille))'''
