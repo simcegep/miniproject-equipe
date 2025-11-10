@@ -1,5 +1,3 @@
-
-
 #fonction afficher la grille selon difficulté
 def choisir_difficulte(): # Principalement Simon, petite modification Marc-Antoine
     print("1. Facile")
@@ -105,6 +103,79 @@ def afficher_grille(grille): # Marc-Antoine
             print(val if val != "_" else "_", end=" ")
         print()
 
+def verifier_erreurs(grille, grille_solution):  # Gabriel
+
+    #Vérifie si certains chiffres dans la grille ne correspondent pas à la solution.
+    #Affiche les positions (ligne, colonne) des erreurs trouvées.
+
+    """
+
+    :param grille:
+    :param grille_solution:
+    :return:
+    """
+
+    erreurs = []
+    for i in range(9):
+        for j in range(9):
+            if grille[i][j] != "_" and grille[i][j] != grille_solution[i][j]:
+                erreurs.append((i, j))
+    if erreurs:
+        print("\n Erreurs détectées aux positions :")
+        for e in erreurs:
+            print(f" - Ligne {e[0]}, Colonne {e[1]}")
+    else:
+        print("\n Aucune erreur détectée pour l'instant.")
+
+
+def verifier_doublons(grille):  # Gabriel
+
+    # Vérifie s’il y a des doublons dans une ligne, une colonne ou un carré 3x3.
+    #Affiche les positions des doublons trouvés.
+
+    """
+
+    :param grille:
+    :return:
+    """
+
+    doublons = []
+
+    # Vérifie les lignes
+    for i in range(9):
+        chiffres = [x for x in grille[i] if x != "_"]
+        for val in set(chiffres):
+            if chiffres.count(val) > 1:
+                doublons.append(f"Ligne {i} (chiffre {val})")
+
+    # Vérifie les colonnes
+    for j in range(9):
+        colonne = [grille[i][j] for i in range(9) if grille[i][j] != "_"]
+        for val in set(colonne):
+            if colonne.count(val) > 1:
+                doublons.append(f"Colonne {j} (chiffre {val})")
+
+    # Vérifie les carrés 3x3
+    for bloc_ligne in range(0, 9, 3):
+        for bloc_colonne in range(0, 9, 3):
+            carre = []
+            for i in range(3):
+                for j in range(3):
+                    val = grille[bloc_ligne + i][bloc_colonne + j]
+                    if val != "_":
+                        carre.append(val)
+            for val in set(carre):
+                if carre.count(val) > 1:
+                    doublons.append(f"Carré 3x3 à partir de (Ligne {bloc_ligne}, Colonne {bloc_colonne}) contient deux {val}")
+
+    if doublons:
+        print("\n Doublons détectés :")
+        for d in doublons:
+            print(f" - {d}")
+    else:
+        print("\n Aucun doublon détecté pour l'instant.")
+
+
 
 
 if __name__ == '__main__':
@@ -209,14 +280,16 @@ if __name__ == '__main__':
         elif choix == "oui":
             try:
                 chiffre = int(input("Quel chiffre voulez-vous ajouter (1 à 9) ? "))
-                ligne = int(input("Quelle ligne (0 à 8) voulez-vous modifier ? "))
-                colonne = int(input("Quelle colonne (0 à 8) voulez-vous modifier ? "))
+                ligne = int(input("Quelle ligne (horizontale)(0 à 8) voulez-vous modifier ? "))
+                colonne = int(input("Quelle colonne (verticale)(0 à 8) voulez-vous modifier ? "))
 
                 if chiffre < 1 or chiffre > 9:
                     print("Le chiffre doit être entre 1 et 9.")
                     continue
 
-                placement_chiffres(grille, ligne, colonne, chiffre)
+                placement_chiffres(grille, ligne, colonne, chiffre)  # modifier par Gabriel la boucle
+                verifier_doublons(grille)
+                verifier_erreurs(grille, grille_solution)
                 afficher_grille(grille)
 
                 # Vérifie si la grille est complète et correcte
@@ -231,6 +304,8 @@ if __name__ == '__main__':
                 print("Erreur : les coordonnées doivent être entre 0 et 8.")
     else:
         print("Réponse invalide. Tapez 'oui', 'non' ou 'q'. ")
+
+
 
 
 
