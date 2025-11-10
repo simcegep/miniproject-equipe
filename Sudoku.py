@@ -255,11 +255,11 @@ if __name__ == '__main__':
     afficher_grille(grille)
 
     while True:
-        choix = input("Voulez-vous entrer un chiffre ? (Oui/Non)(tapez 'q' pour quitter): ").lower()
+        choix = input("Voulez-vous entrer un chiffre ? (Oui/Non)(tapez 'Fin' pour quitter): ").lower()
 
 
         # Quitter la partie
-        if choix == "q":
+        if choix == "fin":
             print("fin de la partie.")
             if grille == grille_solution:
                 print("Bravo! vous avez réussi")
@@ -302,16 +302,11 @@ if __name__ == '__main__':
                 print("Erreur : veuillez entrer un nombre valide.")
             except IndexError:
                 print("Erreur : les coordonnées doivent être entre 0 et 8.")
-    else:
-        print("Réponse invalide. Tapez 'oui', 'non' ou 'q'. ")
+
+        else:
+            print("Réponse invalide. Tapez 'oui', 'non' ou 'fin'. ")
 
 
 
 
 
-    '''while (grille) != solution_grille:
-        chiffre = int(input("Quelle chiffre vouler vous rajouter ? "))
-        ligne = int(input("quelle est la rangé(de gauche à droite, 0 à 8) que vous voulez modifier ? "))
-        colonne = int(input("quelle est la colonne(de en haut à en bas, 0 à 8) que vous voulez modifier ? "))
-        placement_chiffres(grille, ligne, colonne, chiffre)
-        print(afficher_grille(grille))'''
