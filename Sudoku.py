@@ -175,7 +175,8 @@ def verifier_doublons(grille):  # Gabriel
     else:
         print("\n Aucun doublon détecté pour l'instant.")
 
-
+    def indice():
+        pass
 
 
 if __name__ == '__main__':  # Simon
