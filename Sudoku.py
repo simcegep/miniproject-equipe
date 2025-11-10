@@ -108,7 +108,7 @@ def verifier_erreurs(grille, grille_solution):  # Gabriel
     #Vérifie si certains chiffres dans la grille ne correspondent pas à la solution.
     #Affiche les positions (ligne, colonne) des erreurs trouvées.
 
-    """
+    """                      # TODO: donner un nombre maximale d'erreur possible exemple 0/3
 
     :param grille:
     :param grille_solution:
@@ -178,8 +178,8 @@ def verifier_doublons(grille):  # Gabriel
 
 
 
-if __name__ == '__main__':
-    grille_facile = [                                                       #simon
+if __name__ == '__main__':  # Simon
+    grille_facile = [
         [5, 3, "_", "_", 7, "_", "_", "_", "_"],
         [6, "_", "_", 1, 9, 5, "_", "_", "_"],
         ["_", 9, 8, "_", "_", "_", "_", 6, "_"],
