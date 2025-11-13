@@ -1,3 +1,7 @@
+import random
+from dis import RETURN_CONST
+
+
 # fonction afficher la grille selon difficulté
 def choisir_difficulte():  # Principalement Simon, petite modification Marc-Antoine
     print("1. Facile")
@@ -6,17 +10,17 @@ def choisir_difficulte():  # Principalement Simon, petite modification Marc-Anto
     print("Choisissez une difficulté: ")
 
     choix_utilisateur = input("")
-    if choix_utilisateur == 1:
+    if choix_utilisateur == "1":
         grille = grille_facile
         grille_solution = grille_facile_solution
         return grille, grille_solution
 
-    if choix_utilisateur == 2:
+    if choix_utilisateur == "2":
         grille = grille_moyen
         grille_solution = grille_moyen_solution
         return grille, grille_solution
 
-    if choix_utilisateur == 3:
+    if choix_utilisateur == "3":
         grille = grille_difficile
         grille_solution = grille_difficile_solution
         return grille, grille_solution
@@ -25,8 +29,8 @@ def choisir_difficulte():  # Principalement Simon, petite modification Marc-Anto
         print("Choix invalide! Niveau facile est par défaut")
         # print(grille_facile)
         grille = grille_facile
-        solution_grille = grille_facile_solution
-        return grille, solution_grille
+        grille_solution = grille_facile_solution
+        return grille, grille_solution
 
 
 def placement_chiffres(grille, ligne, colonne, chiffre, grille_solution):  # Marc-Antoine
@@ -152,8 +156,33 @@ def verifier_doublons(grille):  # Gabriel
         print("\n Aucun doublon détecté pour l'instant.")
         return False
 
-    def indice():
-        pass
+def indice_random   (grille, grille_solution, nb_indices_utilises):
+        """
+    indice retourné dans la grille (max 6 fois)
+        :param grille:
+        :param grille_solution:
+        :param nb_indices_utilises:
+        :return: grille avec indices
+        """
+        Max_indices = 6
+
+        if nb_indices_utilises >= Max_indices:
+            print("vous avez utilisé tous vos indices")
+            return nb_indices_utilises
+
+        # cases vides
+        cases_vides = [(i, j) for i in range(9) for j in range(9) if grille[i][j] == "_"]
+        if not cases_vides:
+            print("La grille est pleine, aucun indice possible.")
+            return nb_indices_utilises
+
+        i, j = random.choice(cases_vides)
+        bon_chiffre = grille_solution[i][j]
+        grille[i][j] = bon_chiffre
+        nb_indices_utilises += 1
+
+        print(f" Indice #{nb_indices_utilises} : La case (ligne {i}, colonne {j}) contient le chiffre {bon_chiffre}.")
+        return nb_indices_utilises
 
 
 if __name__ == '__main__':  # Simon
@@ -232,6 +261,7 @@ if __name__ == '__main__':  # Simon
 
     grille, grille_solution = choisir_difficulte()
     afficher_grille(grille)
+    nb_indices_utilises = 0
 
     while True:
         choix = input("Voulez-vous entrer un chiffre ? (Oui/Non)(tapez 'Fin' pour quitter): ").lower()
@@ -250,7 +280,8 @@ if __name__ == '__main__':  # Simon
         elif choix == "non":
             indice = input("Voulez vous un indice ? (Oui/Non): ").lower()
             if indice == "oui":
-                print("L'indice va etre ici juste la fonction na pas encore été créé")
+                nb_indices_utilises = indice_random(grille, grille_solution, nb_indices_utilises)
+                afficher_grille(grille)
             else:
                 print("D'accord, Vous pouvez continuer !")
             continue
@@ -265,10 +296,10 @@ if __name__ == '__main__':  # Simon
                     print("Le chiffre doit être entre 1 et 9.")
                     continue
 
-                placement_chiffres(grille, ligne, colonne, chiffre)  # modifier par Gabriel la boucle
-                verifier_doublons(grille)
-                verifier_erreurs(grille, grille_solution)
-                afficher_grille(grille)
+               # placement_chiffres(grille, ligne, colonne, chiffre)  # modifier par Gabriel la boucle
+               # verifier_doublons(grille)
+               # verifier_erreurs(grille, grille_solution)
+               # afficher_grille(grille)
 
                 # Vérifie si la grille est complète et correcte
                 if grille == grille_solution:
