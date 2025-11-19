@@ -13,24 +13,29 @@ def choisir_difficulte():  # Principalement Simon, petite modification Marc-Anto
     if choix_utilisateur == "1":
         grille = grille_facile
         grille_solution = grille_facile_solution
-        return grille, grille_solution
+        grille_original = [row[:] for row in grille]
+        # Référence: https://docs.python.org/3/library/stdtypes.html#typesseq
+        return grille, grille_solution, grille_original
 
     if choix_utilisateur == "2":
         grille = grille_moyen
         grille_solution = grille_moyen_solution
-        return grille, grille_solution
+        grille_original = [row[:] for row in grille]
+        return grille, grille_solution, grille_original
 
     if choix_utilisateur == "3":
         grille = grille_difficile
         grille_solution = grille_difficile_solution
-        return grille, grille_solution
+        grille_original = [row[:] for row in grille]
+        return grille, grille_solution, grille_original
 
     else:
         print("Choix invalide! Niveau facile est par défaut")
         # print(grille_facile)
         grille = grille_facile
         grille_solution = grille_facile_solution
-        return grille, grille_solution
+        grille_original = [row[:]for row in grille]
+        return grille, grille_solution, grille_original
 
 
 def placement_chiffres(grille, ligne, colonne, chiffre, grille_solution):  # Marc-Antoine
@@ -56,6 +61,22 @@ def placement_chiffres(grille, ligne, colonne, chiffre, grille_solution):  # Mar
         return False
 
     print(" Chiffre placé avec succès! ")
+    return True
+
+def modifier_case(grille,grille_originale, ligne, colonne, chiffre):
+
+
+    if grille_originale[ligne][colonne] != "_":
+        print("Impossible de modifier un chiffre de la grille de départ. ")
+        return False
+
+    if not 1 <= chiffre <= 9:
+        print("Le chiffre doit être entre 1 et 9.")
+        return False
+
+
+    grille[ligne][colonne] = chiffre
+    print(f"La case ({ligne}, {colonne}) modifiée avec : {chiffre}")
     return True
 
 
@@ -259,12 +280,12 @@ if __name__ == '__main__':  # Simon
         [7, 9, 6, 3, 1, 8, 4, 5, 2]
     ]
 
-    grille, grille_solution = choisir_difficulte()
+    grille, grille_solution, grille_originale = choisir_difficulte()
     afficher_grille(grille)
     nb_indices_utilises = 0
 
     while True:
-        choix = input("Voulez-vous entrer un chiffre ? (Oui/Non)(tapez 'Fin' pour quitter): ").lower()
+        choix = input("Voulez-vous entrer un chiffre ? (Oui/Non/Change)(tapez 'Fin' pour quitter): ").lower()
 
         # Quitter la partie
         if choix == "fin":
@@ -278,12 +299,19 @@ if __name__ == '__main__':  # Simon
 
         # Demande d'indice
         elif choix == "non":
-            indice = input("Voulez vous un indice ? (Oui/Non): ").lower()
-            if indice == "oui":
+            action = input("Voulez vous un indice ? (Oui/Non): ").lower()
+            if action == "oui":
                 nb_indices_utilises = indice_random(grille, grille_solution, nb_indices_utilises)
                 afficher_grille(grille)
             else:
-                print("D'accord, Vous pouvez continuer !")
+                print("Vous pouvez continuée.")
+            continue
+
+        elif choix == "Change":
+            nouveau = int(input("Le nouveau chiffre ?"))
+            ligne = int(input("Quelle ligne (horizontale)(0 à 8) voulez-vous modifier ? "))
+            colonne = int(input("Quelle colonne (verticale)(0 à 8) voulez-vous modifier ? "))
+            modifier_case(grille, grille_originale, ligne, colonne, nouveau)
             continue
 
         elif choix == "oui":
@@ -296,10 +324,6 @@ if __name__ == '__main__':  # Simon
                     print("Le chiffre doit être entre 1 et 9.")
                     continue
 
-               # placement_chiffres(grille, ligne, colonne, chiffre)  # modifier par Gabriel la boucle
-               # verifier_doublons(grille)
-               # verifier_erreurs(grille, grille_solution)
-               # afficher_grille(grille)
 
                 # Vérifie si la grille est complète et correcte
                 if grille == grille_solution:
