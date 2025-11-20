@@ -172,7 +172,7 @@
     # Afficher la liste actuelle de toutes les erreurs repérées.
 
     # Calculer le nombre d’essais restants :
-        restant = MAX_ERREURS - erreurs_commises
+        # restant = MAX_ERREURS - erreurs_commises
 
     # Si le joueur a atteint ou dépassé la limite d’erreurs :
         # afficher "Vous avez perdu la partie."
