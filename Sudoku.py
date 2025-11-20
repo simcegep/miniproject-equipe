@@ -40,12 +40,12 @@ def choisir_difficulte():  # Principalement Simon, petite modification Marc-Anto
 
 def placement_chiffres(grille, ligne, colonne, chiffre, grille_solution):  # Marc-Antoine
     """
-     Cette fonction prend la grille et le chiffre choisit et son emplacement
-    :param grille:
-    :param ligne:
-    :param colonne:
-    :param chiffre:
-    :return:
+     Cette fonction tente de placer un chiffre dans la grille et vérifie si le placement provoque une erreur.
+    :param grille: La actuelle du Sudoku.
+    :param ligne: La ligne de la cade où placer le chiffre.
+    :param colonne: La colonne de la cade où placer le chiffre.
+    :param chiffre: Le chiffre à insérer dans la case.
+    :return: si le placement est valide ou pas et si le placement crée une erreur
     """
     # Vérifie si la case est remplie
     if grille[ligne][colonne] != "_":
@@ -64,6 +64,15 @@ def placement_chiffres(grille, ligne, colonne, chiffre, grille_solution):  # Mar
     return True
 
 def modifier_case(grille,grille_originale, ligne, colonne, chiffre):
+    """
+    Cette fonction modifie la case si elle n'est pas verrouillée et si le chiffre est valide.
+    :param grille: La grille qui va et qui est modifier par l'utilisateur.
+    :param grille_originale: La grille qui ne sera pas modifié.
+    :param ligne: L'indice de la ligne de la case à modifier.
+    :param colonne: L'indice de la colonne de la case à modifier.
+    :param chiffre:Le chiffre à insérer dans la grille.
+    :return: Si la modification a été effectuée : True. Si la case est non modifiable ou si le chiffre est invalide: False.
+    """
 
 
     if grille_originale[ligne][colonne] != "_":
@@ -82,9 +91,8 @@ def modifier_case(grille,grille_originale, ligne, colonne, chiffre):
 
 def afficher_grille(grille):  # Marc-Antoine
     """
-
-    :param grille:
-    :return:
+    Cette fonction affiche la grille de manière lisible et structurée.
+    :param grille: la grille choisi par le joueur.
     """
 
     for i in range(9):
