@@ -2,6 +2,7 @@ import pytest
 from Sudoku import *
 import random
 
+
 def  test_modifier_case_valide():
     grille = [["_","_","_"],["_","_","_"],["_","_","_"]]
     grille_originale = [["_","_","_"],["_","_","_"],["_","_","_"]]
@@ -170,7 +171,7 @@ def test_indice_random():
         ["_"] * 9,
         ]
 
-        grille_solution = [
+    grille_solution = [
         [1, 2, 3, 4, 5, 6, 7, 8, 9],
         [4, 5, 6, 7, 8, 9, 1, 2, 3],
         [7, 8, 9, 1, 2, 3, 4, 5, 6],

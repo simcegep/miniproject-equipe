@@ -4,11 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7604fd3b-13a7-42fa-8907-1b155029f66b" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sudoku.py" beforeDir="false" afterPath="$PROJECT_DIR$/Sudoku.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pseudocode.py" beforeDir="false" afterPath="$PROJECT_DIR$/pseudocode.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_unitaire.md" beforeDir="false" afterPath="$PROJECT_DIR$/test_unitaire.py" afterDir="false" />
+    <list default="true" id="7604fd3b-13a7-42fa-8907-1b155029f66b" name="Changes" comment="11">
+      <change beforePath="$PROJECT_DIR$/test_unitaire.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_unitaire.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,7 +69,7 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager" selected="Python.Sudoku">
+  <component name="RunManager" selected="Python tests.Python tests in test_unitaire.py">
     <configuration name="Python tests for test_unitaire.test_indice_random" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="miniproject-equipe1" />
       <option name="ENV_FILES" value="" />
@@ -88,6 +85,21 @@
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
+    <configuration name="Python tests for test_unitaire.test_modifier_case_valide" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="miniproject-equipe1" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;test_unitaire.test_modifier_case_valide&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
     <configuration name="Python tests for test_unitaire.test_modifier_case_valide2" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="miniproject-equipe1" />
       <option name="ENV_FILES" value="" />
@@ -100,21 +112,6 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
       <option name="_new_target" value="&quot;test_unitaire.test_modifier_case_valide2&quot;" />
-      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
-      <method v="2" />
-    </configuration>
-    <configuration name="Python tests for test_unitaire.test_placement_chiffre_invalide2" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
-      <module name="miniproject-equipe1" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_unitaire.test_placement_chiffre_invalide2&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
@@ -151,10 +148,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python tests.Python tests in test_unitaire.py" />
+        <item itemvalue="Python tests.Python tests for test_unitaire.test_modifier_case_valide" />
         <item itemvalue="Python tests.Python tests for test_unitaire.test_modifier_case_valide2" />
         <item itemvalue="Python tests.Python tests for test_unitaire.test_indice_random" />
         <item itemvalue="Python tests.Python tests for test_unitaire.test_plusieurs_doublons" />
-        <item itemvalue="Python tests.Python tests for test_unitaire.test_placement_chiffre_invalide2" />
       </list>
     </recent_temporary>
   </component>
@@ -177,10 +174,23 @@
       <workItem from="1763665190847" duration="1442000" />
       <workItem from="1763668250055" duration="358000" />
     </task>
+    <task id="LOCAL-00001" summary="11">
+      <option name="closed" value="true" />
+      <created>1763673262670</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1763673262670</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="11" />
+    <option name="LAST_COMMIT_MESSAGE" value="11" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/miniproject_equipe$Sudoku.coverage" NAME="Sudoku Coverage Results" MODIFIED="1763664303387" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
