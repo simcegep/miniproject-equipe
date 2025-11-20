@@ -153,7 +153,7 @@ def test_plusieurs_doublons():
     # assert
     result_attendu = True
     assert result == result_attendu
-# Simon 
+# Simon
 
 def test_indice_random():
     #arranger
