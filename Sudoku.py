@@ -120,13 +120,26 @@ def _normalise_val(v):
 
 def verifier_erreurs(grille, grille_solution):
     """
-    Vérifie les erreurs dans la grille du joueur sans mettre fin à la partie.
-    - Compte les erreurs (chaque position est comptée une seule fois).
-    - Affiche les positions et le nombre total d'erreurs.
-    Retour :
-      True  = il y a au moins une erreur
-      False = aucune erreur
-    """
+        Vérifie les erreurs présentes dans la grille actuelle par rapport à la grille solution.
+
+        Cette fonction compare chaque case remplie de la grille du joueur avec la valeur
+        correspondante dans la grille solution. Elle détecte toutes les positions où les
+        valeurs ne correspondent pas (en ignorant les cases encore vides, notées "_").
+        Les nouvelles erreurs qui n’avaient jamais été repérées auparavant sont comptabilisées,
+        tandis que les erreurs déjà connues ne sont pas recompteurs.
+
+        :param grille:
+            La grille remplie par le joueur, sous forme de liste de listes. Chaque cellule
+            contient soit une valeur, soit "_" pour indiquer une case vide.
+
+        :param grille_solution:
+            La grille correcte à atteindre, sous forme de liste de listes, contenant toutes
+            les valeurs finales attendues pour chaque case.
+
+        :return:
+            Retourne False s’aucune erreur n’a été trouvée au moment de l’appel.
+            Retourne True si au moins une erreur est détectée dans la grille.
+        """
 
     global _erreurs_commises, _erreurs_positions_connues
 
@@ -170,9 +183,23 @@ def verifier_erreurs(grille, grille_solution):
 
 def verifier_doublons(grille):
     """
-    Vérifie s’il existe un doublon dans une ligne, une colonne ou un bloc 3x3.
-    Retourne True dès qu’un doublon est trouvé, sinon False.
-    """
+       Vérifie s’il existe des doublons dans la grille actuelle.
+
+       La fonction inspecte successivement les lignes, les colonnes et les blocs 3x3
+       afin de repérer toute valeur apparaissant plus d’une fois dans une même zone,
+       en ignorant les cases vides ("_"). Dès qu’un doublon est détecté, un message
+       explicite est affiché pour indiquer où il se trouve, puis la fonction stoppe
+       immédiatement la recherche.
+
+       :param grille:
+           La grille du joueur, donnée sous forme de liste de listes, contenant des
+           valeurs remplies ou "_" pour les cases encore vides.
+
+       :return:
+           Retourne True dès qu’un doublon est trouvé dans une ligne, une colonne ou
+           un bloc 3x3.
+           Retourne False si aucune duplication n’est détectée dans l’ensemble de la grille.
+       """
 
     n = len(grille)
 
