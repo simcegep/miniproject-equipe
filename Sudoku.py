@@ -1,5 +1,5 @@
 import random
-from dis import RETURN_CONST
+
 
 
 # fonction afficher la grille selon difficulté
