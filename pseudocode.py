@@ -147,51 +147,69 @@
 
 #PSEUDO-CODE GABRIEL
 
-# verifier_erreurs(grille, grille_solution)
+# verifier_erreurs(grille, grille_solution):
 
-    # - Parcourir toute la grille (toutes les lignes i et colonnes j)
-# - Si la case n'est pas "_" et la valeur != valeur dans grille_solution :
-#     - ajouter la position (i,j) au set erreurs_courantes
-# - Si erreurs_courantes est vide :
-#     - afficher "Aucune erreur détectée pour l'instant."
-#     - retourner False
-# - Calculer nouvelles = erreurs_courantes - erreurs_positions_connues (global)
-# - Si nouvelles non vide :
-#     - erreurs_commises += len(nouvelles)  # incrémenter le compteur global
-#     - mettre à jour erreurs_positions_connues en y ajoutant nouvelles
-# - Afficher toutes les erreurs courantes (liste de positions)
-# - Calculer restant = MAX_ERREURS - erreurs_commises
-# - Si erreurs_commises >= MAX_ERREURS :
-#     - afficher message défaite "Vous avez perdu la partie."
-#     - retourner True
-# - Sinon :
-#     - afficher le nombre d'erreurs commises et les chances restantes
-#     - retourner True    # (il y a des erreurs)
+    # Parcourir chaque case de la grille (pour chaque ligne i, chaque colonne j) :
+        # Si la case n'est pas "_" et que la valeur ne correspond pas à celle de la solution :
+            # enregistrer la position (i, j) dans un ensemble erreurs_courantes.
 
-#PSEUDO-CODE GABRIEL
+    # Si erreurs_courantes est vide :
+        # afficher "Aucune erreur détectée pour l’instant."
+        # retourner False
 
-    # verifier_doublons(grille)
-# - Pour chaque ligne i :
-#     - créer dict seen vide (val -> colonne)
-#     - pour chaque colonne j :
-#         - if case == "_" continue
-#         - if val dans seen :
-#             - afficher "Doublon détecté : Ligne i contient deux fois val (colonnes seen[val] et j)."
-#             - return True   # on s'arrête tout de suite
-#         - else seen[val] = j
-# - Pour chaque colonne j :
-#     - même procédé (seen stocke ligne précédente)
-#     - si doublon trouvé : afficher et return True
-# - Calculer taille bloc blk = racine entière de n, si pas carré parfait alors blk = 3
-# - Pour chaque bloc 3x3 (bloc_ligne, bloc_colonne) :
-#     - seen = {}
-#     - pour chaque case du bloc :
-#         - if "_": continue
-#         - if val dans seen: afficher position et return True
-#         - else seen[val] = (i,j)
-# - Si rien trouvé :
-#     - afficher "Aucun doublon détecté pour l'instant."
-#     - return False
+    # Déterminer quelles erreurs viennent juste d'être commises :
+       # nouvelles = erreurs_courantes - erreurs_positions_connues
+
+    # Si de nouvelles erreurs apparaissent :
+        # incrémenter erreurs_commises du nombre de nouvelles erreurs
+        # ajouter ces positions dans erreurs_positions_connues
+
+    # Afficher la liste actuelle de toutes les erreurs repérées.
+
+    # Calculer le nombre d’essais restants :
+        restant = MAX_ERREURS - erreurs_commises
+
+    # Si le joueur a atteint ou dépassé la limite d’erreurs :
+        # afficher "Vous avez perdu la partie."
+        # retourner True
+
+    # Sinon :
+        # afficher combien d’erreurs ont été commises et combien il reste de tentatives
+        # retourner True   (puisqu’il y a des erreurs dans la grille)
+
+
+# PSEUDO-CODE GABRIEL #2
+
+#verifier_doublons(grille):
+
+    # Vérifier chaque ligne :
+        # créer un dictionnaire vide "seen" pour suivre les valeurs déjà rencontrées
+        # pour chaque case :
+             ignorer si la case contient "_"
+            # si la valeur est déjà dans "seen" :
+                # afficher "Doublon détecté : la ligne i contient deux fois la valeur val."
+                # retourner True
+            # sinon l’ajouter à seen
+
+    # Vérifier chaque colonne :
+        # même logique que pour les lignes, mais seen garde les numéros de ligne
+
+    # Déterminer la taille standard d’un bloc :
+        # blk = racine carrée entière de la taille de la grille
+        # si ce n’est pas un carré parfait, utiliser blk = 3 par défaut
+
+    # Vérifier chaque bloc (3×3 généralement) :
+        # réinitialiser seen
+        # parcourir toutes les cases du bloc :
+            # ignorer les "_"
+            # si la valeur apparaît déjà dans seen :
+                # afficher la position du conflit
+                # retourner True
+            # sinon, enregistrer la position
+
+    # Si aucun doublon n’a été trouvé :
+        # afficher "Aucun doublon détecté pour l’instant."
+        # retourner False
 
 
 
