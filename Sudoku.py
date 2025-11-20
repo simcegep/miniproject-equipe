@@ -229,7 +229,7 @@ def verifier_doublons(grille):
 
 def indice_random   (grille, grille_solution, nb_indices_utilises): #simon
         """
-    indice retourné dans la grille (max 6 fois)
+        indice retourné dans la grille (max 6 fois)
         :param grille:
         :param grille_solution:
         :param nb_indices_utilises:

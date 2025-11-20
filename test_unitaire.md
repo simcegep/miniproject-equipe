@@ -153,4 +153,32 @@ def test_plusieurs_doublons():
     # assert
     result_attendu = True
     assert result == result_attendu
+# Simon 
 
+def test_indice_random():
+    #arranger
+grille = [
+        ["_", "_", "_"],
+        ["_", "_", "_"],
+        ["_", "_", "_"]
+    ]
+grille_solution = [
+        [1, 2, 3],
+        [4, 5, 6],
+        [7, 8, 9]
+    ]   
+nb_indices = 0
+
+# demander indice:
+nb_indices = indice_random(grille, grille_solution, nb_indices)
+# assert compteur indice +1
+assert nb_indices == 1
+# vérification valeur
+cases_correctes = 0
+    for i in range(3):
+        for j in range(3):
+            if grille[i][j] != "_":
+                assert grille[i][j] == grille_solution[i][j]
+                cases_correctes += 1
+
+assert cases_correctes
