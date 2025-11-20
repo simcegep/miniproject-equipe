@@ -1,5 +1,6 @@
 import pytest
 from Sudoku import *
+import random
 
 def  test_modifier_case_valide():
     grille = [["_","_","_"],["_","_","_"],["_","_","_"]]
@@ -157,28 +158,41 @@ def test_plusieurs_doublons():
 
 def test_indice_random():
     #arranger
-grille = [
-        ["_", "_", "_"],
-        ["_", "_", "_"],
-        ["_", "_", "_"]
-    ]
-grille_solution = [
-        [1, 2, 3],
-        [4, 5, 6],
-        [7, 8, 9]
-    ]   
-nb_indices = 0
+    grille = [
+        ["_"] * 9,
+        ["_"] * 9,
+        ["_"] * 9,
+        ["_"] * 9,
+        ["_"] * 9,
+        ["_"] * 9,
+        ["_"] * 9,
+        ["_"] * 9,
+        ["_"] * 9,
+        ]
 
-# demander indice:
-nb_indices = indice_random(grille, grille_solution, nb_indices)
-# assert compteur indice +1
-assert nb_indices == 1
-# vérification valeur
-cases_correctes = 0
-    for i in range(3):
-        for j in range(3):
+        grille_solution = [
+        [1, 2, 3, 4, 5, 6, 7, 8, 9],
+        [4, 5, 6, 7, 8, 9, 1, 2, 3],
+        [7, 8, 9, 1, 2, 3, 4, 5, 6],
+        [2, 3, 4, 5, 6, 7, 8, 9, 1],
+        [5, 6, 7, 8, 9, 1, 2, 3, 4],
+        [8, 9, 1, 2, 3, 4, 5, 6, 7],
+        [3, 4, 5, 6, 7, 8, 9, 1, 2],
+        [6, 7, 8, 9, 1, 2, 3, 4, 5],
+        [9, 1, 2, 3, 4, 5, 6, 7, 8],
+    ]
+    nb_indices = 0
+
+    # demander indice:
+    nb_indices = indice_random(grille, grille_solution, nb_indices)
+    # assert compteur indice +1
+    assert nb_indices == 1
+    # vérification valeur
+    cases_correctes = 0
+    for i in range(9):
+        for j in range(9):
             if grille[i][j] != "_":
                 assert grille[i][j] == grille_solution[i][j]
                 cases_correctes += 1
 
-assert cases_correctes
+    assert cases_correctes == 1

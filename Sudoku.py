@@ -1,6 +1,4 @@
 import random
-from dis import RETURN_CONST
-
 
 # fonction afficher la grille selon difficulté
 def choisir_difficulte():  # Principalement Simon, petite modification Marc-Antoine
@@ -43,8 +41,8 @@ def placement_chiffres(grille, ligne, colonne, chiffre, grille_solution):  # Mar
     """
      Cette fonction tente de placer un chiffre dans la grille et vérifie si le placement provoque une erreur.
     :param grille: La actuelle du Sudoku.
-    :param ligne: La ligne de la cade où placer le chiffre.
-    :param colonne: La colonne de la cade où placer le chiffre.
+    :param ligne: La ligne de la case où placer le chiffre.
+    :param colonne: La colonne de la case où placer le chiffre.
     :param chiffre: Le chiffre à insérer dans la case.
     :return: si le placement est valide ou pas et si le placement crée une erreur
     """
