@@ -119,117 +119,110 @@ def _normalise_val(v):
 
 
 def verifier_erreurs(grille, grille_solution):
-    # Gabriel (version complète avec compteur d'erreurs - max 3)
     """
-    Vérifie si certains chiffres dans la grille ne correspondent pas à la solution.
-    - Donne au joueur 3 chances (global).
-    - Les nouvelles erreurs sont comptées une fois (on garde la trace des positions erronées connues).
-    :param grille: la grille courant du joueur (liste de listes)
-    :param grille_solution: la grille solution complète
-    :return: True si il y a des erreurs (ou si le joueur a perdu), False si aucune erreur détectée
-    Effets de bord:
-      - affiche les positions des erreurs
-      - met à jour le compteur global d'erreurs et annonce la défaite si >= MAX_ERREURS
+    Vérifie les erreurs dans la grille du joueur sans mettre fin à la partie.
+    - Compte les erreurs (chaque position est comptée une seule fois).
+    - Affiche les positions et le nombre total d'erreurs.
+    Retour :
+      True  = il y a au moins une erreur
+      False = aucune erreur
     """
+
     global _erreurs_commises, _erreurs_positions_connues
 
     erreurs_courantes = set()
-    # parcourir toute la grille (on suppose mêmes dimensions)
     n = len(grille)
+
+    # Parcours de la grille et détection des erreurs
     for i in range(n):
         for j in range(len(grille[i])):
             val = _normalise_val(grille[i][j])
             sol = _normalise_val(grille_solution[i][j])
+
             if val != "_" and val != sol:
                 erreurs_courantes.add((i, j))
 
+    # Aucune erreur = message + retour False
     if not erreurs_courantes:
-        print("\n Aucune erreur détectée pour l'instant.")
+        print("\nAucune erreur détectée pour l'instant.")
         return False
 
-    # Calculer nouvelles erreurs (pour ne pas compter deux fois la même position)
+    # Calcul des nouvelles erreurs (pas déjà connues)
     nouvelles = erreurs_courantes - _erreurs_positions_connues
+
+    # Mise à jour des compteurs
     if nouvelles:
         _erreurs_commises += len(nouvelles)
         _erreurs_positions_connues |= nouvelles
 
-    # Afficher toutes les erreurs actuelles (pas uniquement les nouvelles)
-    print("\n Erreurs détectées aux positions :")
-    for e in sorted(list(erreurs_courantes)):
+    # Affichage des erreurs actuelles
+    print("\nErreurs détectées aux positions :")
+    for e in sorted(erreurs_courantes):
         print(f" - Ligne {e[0]}, Colonne {e[1]}")
 
-    restant = max(0, MAX_ERREURS - _erreurs_commises)
-    if _erreurs_commises >= MAX_ERREURS:
-        print(f"\nVous avez commis {_erreurs_commises} erreurs. Vous avez perdu la partie.")
-        # Ici on retourne True pour indiquer qu'il y a une erreur (placement doit être annulé)
-        return True
+    # Affichage du nombre d'erreurs commises (pas de défaite)
+    print(f"\nNombre d'erreurs commises : {_erreurs_commises}")
 
-    print(f"\nNombre d'erreurs commises : {_erreurs_commises}. Chances restantes : {restant}.")
-    return True  # il y a au moins une erreur
+    return True
+
 
 
 
 def verifier_doublons(grille):
-    # Gabriel (version courte : s'arrête au premier doublon trouvé)
     """
-    Vérifie s’il y a des doublons dans une ligne, une colonne ou un carré 3x3.
-    Cette version *stoppe immédiatement* dès qu'un doublon est trouvé (pour être moins verbeuse).
-    :param grille: la grille courante (liste de listes)
-    :return: True si doublon détecté (et affiche le doublon), False sinon
+    Vérifie s’il existe un doublon dans une ligne, une colonne ou un bloc 3x3.
+    Retourne True dès qu’un doublon est trouvé, sinon False.
     """
+
     n = len(grille)
 
-    # Vérifier les lignes (stop au premier doublon)
+     # Vérification des lignes
     for i in range(n):
-        seen = {}
-        for j, raw in enumerate(grille[i]):
-            val = _normalise_val(raw)
+        vus = {}
+        for j in range(len(grille[i])):
+            val = _normalise_val(grille[i][j])
             if val == "_":
                 continue
-            if val in seen:
-                # doublon trouvé
-                print(f"\n Doublon détecté : Ligne {i} contient deux fois le chiffre {val} (colonnes {seen[val]} et {j}).")
+            if val in vus:
+                print(f"Doublon dans la ligne {i} : {val} (colonnes {vus[val]} et {j})")
                 return True
-            seen[val] = j
+            vus[val] = j
 
-    # Vérifier les colonnes
+    #  Vérification des colonnes
     for j in range(len(grille[0])):
-        seen = {}
+        vus = {}
         for i in range(n):
             val = _normalise_val(grille[i][j])
             if val == "_":
                 continue
-            if val in seen:
-                print(f"\n Doublon détecté : Colonne {j} contient deux fois le chiffre {val} (lignes {seen[val]} et {i}).")
+            if val in vus:
+                print(f"Doublon dans la colonne {j} : {val} (lignes {vus[val]} et {i})")
                 return True
-            seen[val] = i
+            vus[val] = i
 
-    # Vérifier les carrés 3x3 (si grille 9x9) ; si taille différente on essaie de deviner la taille de bloc
-    # on prends racine entière si possible sinon on parcourt des blocs 3x3 par défaut
-    import math
-    blk = int(math.isqrt(n))
-    if blk * blk != n:
-        blk = 3  # fallback raisonnable
-    for bloc_ligne in range(0, n, blk):
-        for bloc_col in range(0, len(grille[0]), blk):
-            seen = {}
-            for i in range(bloc_ligne, min(bloc_ligne + blk, n)):
-                for j in range(bloc_col, min(bloc_col + blk, len(grille[0]))):
+    #  Vérification des blocs 3x3
+    bloc = 3  # taille d’un bloc au Sudoku
+
+    for bi in range(0, n, bloc):
+        for bj in range(0, n, bloc):
+            vus = {}
+            for i in range(bi, bi + bloc):
+                for j in range(bj, bj + bloc):
                     val = _normalise_val(grille[i][j])
                     if val == "_":
                         continue
-                    if val in seen:
-                        prev = seen[val]
-                        print(f"\n Doublon détecté : Carré 3x3 débutant à (Ligne {bloc_ligne}, Colonne {bloc_col}) contient deux {val} (positions {prev} et ({i},{j})).")
+                    if val in vus:
+                        pi, pj = vus[val]
+                        print(f"Doublon dans le bloc ({bi},{bj}) : {val} (positions ({pi},{pj}) et ({i},{j}))")
                         return True
-                    seen[val] = (i, j)
+                    vus[val] = (i, j)
 
-    print("\n Aucun doublon détecté pour l'instant.")
     return False
+
 
 def indice_random   (grille, grille_solution, nb_indices_utilises): #simon
         """
-        indice retourné dans la grille (max 6 fois)
+    indice retourné dans la grille (max 6 fois)
         :param grille:
         :param grille_solution:
         :param nb_indices_utilises:
