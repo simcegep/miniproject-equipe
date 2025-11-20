@@ -267,6 +267,23 @@ def indice_random   (grille, grille_solution, nb_indices_utilises): #simon
             print("La grille est pleine, aucun indice possible.")
             return nb_indices_utilises
 
+        cases_possibles = []
+        for i, j in cases_vides:
+            val = grille_solution[i][j]
+
+            # Vérifie la ligne
+            if any(grille[i][x] == val for x in range(9)):
+                continue
+            # Vérifie la colonne
+            if any(grille[y][j] == val for y in range(9)):
+                continue
+            # Vérifie le bloc 3x3
+            bi, bj = 3 * (i // 3), 3 * (j // 3)
+            if any(grille[x][y] == val for x in range(bi, bi + 3) for y in range(bj, bj + 3)):
+                continue
+
+            cases_possibles.append((i, j))
+
         i, j = random.choice(cases_vides)
         bon_chiffre = grille_solution[i][j]
         grille[i][j] = bon_chiffre
