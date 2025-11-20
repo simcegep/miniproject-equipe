@@ -119,11 +119,12 @@ def _normalise_val(v):
 
 
 def verifier_erreurs(grille, grille_solution):
+    # documentation corriger par chatgpt pour eviter les fautes de francais 
     """
         Vérifie les erreurs présentes dans la grille actuelle par rapport à la grille solution.
 
         Cette fonction compare chaque case remplie de la grille du joueur avec la valeur
-        correspondante dans la grille solution. Elle détecte toutes les positions où les
+        correspondante dans la grille solution. Elle détecte toutes les positions où les       
         valeurs ne correspondent pas (en ignorant les cases encore vides, notées "_").
         Les nouvelles erreurs qui n’avaient jamais été repérées auparavant sont comptabilisées,
         tandis que les erreurs déjà connues ne sont pas recompteurs.
@@ -182,6 +183,7 @@ def verifier_erreurs(grille, grille_solution):
 
 
 def verifier_doublons(grille):
+    # documentation corriger par chatgpt pour eviter les fautes de francais 
     """
        Vérifie s’il existe des doublons dans la grille actuelle.
 
@@ -207,7 +209,7 @@ def verifier_doublons(grille):
     for i in range(n):
         vus = {}
         for j in range(len(grille[i])):
-            val = _normalise_val(grille[i][j])
+            val = _normalise_val(grille[i][j])  # aide de chatgpt pour cette partie du program pour permettre un bon fonctionnement
             if val == "_":
                 continue
             if val in vus:
