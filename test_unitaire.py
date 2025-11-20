@@ -71,3 +71,78 @@ def test_placement_chiffre_invalide2():
     result_attendu = grille[0][0] == "_"
 
     assert result == result_attendu
+
+
+#GABRIEL
+
+def test_aucune_erreur():
+    # arrange
+    valeur = 5
+    mini = 1
+    maxi = 9
+
+    # act
+    resultat = verifier_erreur(valeur, mini, maxi)
+
+    # assert
+    assert resultat == False  # pas d’erreur
+
+
+def test_valeur_trop_petite():
+    # arrange
+    valeur = 0
+    mini = 1
+    maxi = 9
+
+    # act
+    resultat = verifier_erreur(valeur, mini, maxi)
+
+    # assert
+    assert resultat == True   # erreur détectée
+
+
+def test_valeur_trop_grande():
+    # arrange
+    valeur = 20
+    mini = 1
+    maxi = 9
+
+    # act
+    resultat = verifier_erreur(valeur, mini, maxi)
+
+    # assert
+    assert resultat == True   # erreur détectée
+
+    #GABRIEL
+def test_aucun_doublon():
+    # arrange
+    liste = [1, 2, 3, 4]
+
+    # act
+    resultat = verifier_doublons(liste)
+
+    # assert
+    assert resultat == False   # pas de doublon
+
+
+def test_un_doublon_present():
+    # arrange
+    liste = [1, 2, 2, 3]
+
+    # act
+    resultat = verifier_doublons(liste)
+
+    # assert
+    assert resultat == True    # doublon détecté
+
+
+def test_plusieurs_doublons():
+    # arrange
+    liste = [5, 5, 5]
+
+    # act
+    resultat = verifier_doublons(liste)
+
+    # assert
+    assert resultat == True
+

@@ -145,4 +145,55 @@
         # Afficher "réponse invalide"
 
 
+#PSEUDO-CODE GABRIEL
+
+# verifier_erreurs(grille, grille_solution)
+
+    # - Parcourir toute la grille (toutes les lignes i et colonnes j)
+# - Si la case n'est pas "_" et la valeur != valeur dans grille_solution :
+#     - ajouter la position (i,j) au set erreurs_courantes
+# - Si erreurs_courantes est vide :
+#     - afficher "Aucune erreur détectée pour l'instant."
+#     - retourner False
+# - Calculer nouvelles = erreurs_courantes - erreurs_positions_connues (global)
+# - Si nouvelles non vide :
+#     - erreurs_commises += len(nouvelles)  # incrémenter le compteur global
+#     - mettre à jour erreurs_positions_connues en y ajoutant nouvelles
+# - Afficher toutes les erreurs courantes (liste de positions)
+# - Calculer restant = MAX_ERREURS - erreurs_commises
+# - Si erreurs_commises >= MAX_ERREURS :
+#     - afficher message défaite "Vous avez perdu la partie."
+#     - retourner True
+# - Sinon :
+#     - afficher le nombre d'erreurs commises et les chances restantes
+#     - retourner True    # (il y a des erreurs)
+
+#PSEUDO-CODE GABRIEL
+
+    # verifier_doublons(grille)
+# - Pour chaque ligne i :
+#     - créer dict seen vide (val -> colonne)
+#     - pour chaque colonne j :
+#         - if case == "_" continue
+#         - if val dans seen :
+#             - afficher "Doublon détecté : Ligne i contient deux fois val (colonnes seen[val] et j)."
+#             - return True   # on s'arrête tout de suite
+#         - else seen[val] = j
+# - Pour chaque colonne j :
+#     - même procédé (seen stocke ligne précédente)
+#     - si doublon trouvé : afficher et return True
+# - Calculer taille bloc blk = racine entière de n, si pas carré parfait alors blk = 3
+# - Pour chaque bloc 3x3 (bloc_ligne, bloc_colonne) :
+#     - seen = {}
+#     - pour chaque case du bloc :
+#         - if "_": continue
+#         - if val dans seen: afficher position et return True
+#         - else seen[val] = (i,j)
+# - Si rien trouvé :
+#     - afficher "Aucun doublon détecté pour l'instant."
+#     - return False
+
+
+
+
 
