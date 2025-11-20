@@ -190,7 +190,7 @@
     # Vérifier chaque ligne :
         # créer un dictionnaire vide "seen" pour suivre les valeurs déjà rencontrées
         # pour chaque case :
-             ignorer si la case contient "_"
+             # ignorer si la case contient "_"
             # si la valeur est déjà dans "seen" :
                 # afficher "Doublon détecté : la ligne i contient deux fois la valeur val."
                 # retourner True
