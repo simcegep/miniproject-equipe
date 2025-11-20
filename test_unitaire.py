@@ -82,10 +82,11 @@ def test_aucune_erreur():
     maxi = 9
 
     # act
-    resultat = verifier_erreur(valeur, mini, maxi)
+    result = verifier_erreur(valeur, mini, maxi)
 
     # assert
-    assert resultat == False  # pas d’erreur
+    result_attendu = False  # pas d’erreur
+    assert result == result_attendu
 
 
 def test_valeur_trop_petite():
@@ -95,10 +96,11 @@ def test_valeur_trop_petite():
     maxi = 9
 
     # act
-    resultat = verifier_erreur(valeur, mini, maxi)
+    result = verifier_erreur(valeur, mini, maxi)
 
     # assert
-    assert resultat == True   # erreur détectée
+    result_attendu = True   # erreur détectée
+    assert result == result_attendu
 
 
 def test_valeur_trop_grande():
@@ -108,21 +110,25 @@ def test_valeur_trop_grande():
     maxi = 9
 
     # act
-    resultat = verifier_erreur(valeur, mini, maxi)
+    result = verifier_erreur(valeur, mini, maxi)
 
     # assert
-    assert resultat == True   # erreur détectée
+    result_attendu = True   # erreur détectée
+    assert result == result_attendu
 
-    #GABRIEL
+
+# GABRIEL
+
 def test_aucun_doublon():
     # arrange
     liste = [1, 2, 3, 4]
 
     # act
-    resultat = verifier_doublons(liste)
+    result = verifier_doublons(liste)
 
     # assert
-    assert resultat == False   # pas de doublon
+    result_attendu = False   # pas de doublon
+    assert result == result_attendu
 
 
 def test_un_doublon_present():
@@ -130,10 +136,11 @@ def test_un_doublon_present():
     liste = [1, 2, 2, 3]
 
     # act
-    resultat = verifier_doublons(liste)
+    result = verifier_doublons(liste)
 
     # assert
-    assert resultat == True    # doublon détecté
+    result_attendu = True    # doublon détecté
+    assert result == result_attendu
 
 
 def test_plusieurs_doublons():
@@ -141,8 +148,9 @@ def test_plusieurs_doublons():
     liste = [5, 5, 5]
 
     # act
-    resultat = verifier_doublons(liste)
+    result = verifier_doublons(liste)
 
     # assert
-    assert resultat == True
+    result_attendu = True
+    assert result == result_attendu
 
