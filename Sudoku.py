@@ -4,6 +4,7 @@ from dis import RETURN_CONST
 
 # fonction afficher la grille selon difficulté
 def choisir_difficulte():  # Principalement Simon, petite modification Marc-Antoine
+    print("Bienvenue au jeu sudoku!")
     print("1. Facile")
     print("2. Moyen")
     print("3. Difficile")
@@ -226,7 +227,7 @@ def verifier_doublons(grille):
     print("\n Aucun doublon détecté pour l'instant.")
     return False
 
-def indice_random   (grille, grille_solution, nb_indices_utilises):
+def indice_random   (grille, grille_solution, nb_indices_utilises): #simon
         """
     indice retourné dans la grille (max 6 fois)
         :param grille:

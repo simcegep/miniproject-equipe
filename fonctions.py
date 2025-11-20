@@ -71,3 +71,29 @@ def placement_chiffres(grille, ligne, colonne, chiffre): # Marc-An
        return False
    #######################################
 ##############################################
+def indice_random(grille, grille_solution, nb_indices_utilises):  # simon
+    """
+indice retourné dans la grille (max 6 fois)
+   donne un indice:
+   cherche case vide et donne la position (i(ligne)), (j(colonne)))
+    """
+    Max_indices = 6
+
+    if nb_indices_utilises >= Max_indices:
+        print("vous avez utilisé tous vos indices")
+        return nb_indices_utilises
+
+    # cases vides
+    cases_vides = [(i, j) for i in range(9) for j in range(9) if grille[i][j] == "_"]
+    if not cases_vides:
+        print("La grille est pleine, aucun indice possible.")
+        return nb_indices_utilises
+
+    i, j = random.choice(cases_vides)
+    bon_chiffre = grille_solution[i][j]
+    grille[i][j] = bon_chiffre
+    nb_indices_utilises += 1
+
+    print(f" Indice #{nb_indices_utilises} : La case (ligne {i}, colonne {j}) contient le chiffre {bon_chiffre}.")
+    return nb_indices_utilises
+####################
