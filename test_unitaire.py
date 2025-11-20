@@ -41,9 +41,7 @@ def test_modifier_case_invalide():
 
     assert result == result_attendu
 
-# Les test unitaire des fonction placement_chiffre et modifier_case sont pratuiquement pareil,
-# la différance des deux fonction est que l'une est de placer le chiffre dans la grille et l'autre
-#permet de changer un chiffre qui n'était pas valide.
+
 
 def test_placement_chiffre_valide():
     grille = [["_", "_", "_"], ["_", "_", "_"], ["_", "_", "_"]]

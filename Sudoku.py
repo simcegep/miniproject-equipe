@@ -1,5 +1,7 @@
 import random
 
+
+
 # fonction afficher la grille selon difficulté
 def choisir_difficulte():  # Principalement Simon, petite modification Marc-Antoine
     print("Bienvenue au jeu sudoku!")
