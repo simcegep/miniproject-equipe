@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7604fd3b-13a7-42fa-8907-1b155029f66b" name="Changes" comment="11">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test_unitaire.py" beforeDir="false" afterPath="$PROJECT_DIR$/test_unitaire.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -47,10 +48,14 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Python tests.Python tests for test_unitaire.test_aucun_doublon.executor": "Run",
+    "Python tests.Python tests for test_unitaire.test_aucune_erreur.executor": "Run",
     "Python tests.Python tests for test_unitaire.test_indice_random.executor": "Run",
+    "Python tests.Python tests for test_unitaire.test_modifier_case_valide.executor": "Run",
     "Python tests.Python tests for test_unitaire.test_modifier_case_valide2.executor": "Run",
     "Python tests.Python tests for test_unitaire.test_placement_chiffre_invalide2.executor": "Run",
     "Python tests.Python tests for test_unitaire.test_plusieurs_doublons.executor": "Run",
+    "Python tests.Python tests for test_unitaire.test_un_doublon_present.executor": "Run",
     "Python tests.Python tests in test_unitaire.py.executor": "Run",
     "Python.Sudoku.executor": "Run",
     "Python.as.executor": "Run",
@@ -69,7 +74,39 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager" selected="Python tests.Python tests in test_unitaire.py">
+  <component name="RunManager" selected="Python tests.Python tests for test_unitaire.test_aucune_erreur">
+    <configuration name="Python tests for test_unitaire.test_aucun_doublon" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="miniproject-equipe1" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;test_unitaire.test_aucun_doublon&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Python tests for test_unitaire.test_aucune_erreur" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="miniproject-equipe1" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;test_unitaire.test_aucune_erreur&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
     <configuration name="Python tests for test_unitaire.test_indice_random" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="miniproject-equipe1" />
       <option name="ENV_FILES" value="" />
@@ -80,38 +117,9 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
       <option name="_new_target" value="&quot;test_unitaire.test_indice_random&quot;" />
-      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
-      <method v="2" />
-    </configuration>
-    <configuration name="Python tests for test_unitaire.test_modifier_case_valide" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
-      <module name="miniproject-equipe1" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_unitaire.test_modifier_case_valide&quot;" />
-      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
-      <method v="2" />
-    </configuration>
-    <configuration name="Python tests for test_unitaire.test_modifier_case_valide2" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
-      <module name="miniproject-equipe1" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_unitaire.test_modifier_case_valide2&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
@@ -125,12 +133,13 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
       <option name="_new_target" value="&quot;test_unitaire.test_plusieurs_doublons&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Python tests in test_unitaire.py" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+    <configuration name="Python tests for test_unitaire.test_un_doublon_present" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="miniproject-equipe1" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -140,25 +149,27 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;$PROJECT_DIR$/test_unitaire.py&quot;" />
-      <option name="_new_targetType" value="&quot;PATH&quot;" />
+      <option name="_new_target" value="&quot;test_unitaire.test_un_doublon_present&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python tests.Python tests in test_unitaire.py" />
-        <item itemvalue="Python tests.Python tests for test_unitaire.test_modifier_case_valide" />
-        <item itemvalue="Python tests.Python tests for test_unitaire.test_modifier_case_valide2" />
-        <item itemvalue="Python tests.Python tests for test_unitaire.test_indice_random" />
+        <item itemvalue="Python tests.Python tests for test_unitaire.test_aucune_erreur" />
         <item itemvalue="Python tests.Python tests for test_unitaire.test_plusieurs_doublons" />
+        <item itemvalue="Python tests.Python tests for test_unitaire.test_indice_random" />
+        <item itemvalue="Python tests.Python tests for test_unitaire.test_un_doublon_present" />
+        <item itemvalue="Python tests.Python tests for test_unitaire.test_aucun_doublon" />
       </list>
     </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-python-sdk-9f8e2b94138c-36ea0e71a18c-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-251.26094.141" />
+        <option value="bundled-js-predefined-d6986cc7102b-09060db00ec0-JavaScript-PY-251.26927.90" />
+        <option value="bundled-python-sdk-41e8cd69c857-64d779b69b7a-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-251.26927.90" />
       </set>
     </attachedChunks>
   </component>
@@ -173,6 +184,7 @@
       <workItem from="1763663279195" duration="1394000" />
       <workItem from="1763665190847" duration="1442000" />
       <workItem from="1763668250055" duration="358000" />
+      <workItem from="1763740869404" duration="366000" />
     </task>
     <task id="LOCAL-00001" summary="11">
       <option name="closed" value="true" />
@@ -193,6 +205,7 @@
     <option name="LAST_COMMIT_MESSAGE" value="11" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/miniproject_equipe$.coverage" NAME=" Coverage Results" MODIFIED="1763741233442" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/miniproject_equipe$Sudoku.coverage" NAME="Sudoku Coverage Results" MODIFIED="1763664303387" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/miniproject_equipe$as.coverage" NAME="as Coverage Results" MODIFIED="1763666375087" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/miniproject_equipe$fonctions.coverage" NAME="fonctions Coverage Results" MODIFIED="1763664434799" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />

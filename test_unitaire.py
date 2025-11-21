@@ -61,84 +61,48 @@ def test_placement_chiffre_invalide2():
 #GABRIEL
 
 def test_aucune_erreur():
-    # arrange
-    valeur = 5
-    mini = 1
-    maxi = 9
 
-    # act
-    result = verifier_erreur(valeur, mini, maxi)
+   grille = [
+       ["1","2","3"],
+       ["4","5","6"],
+       ["7","8","9"]
+   ]
 
-    # assert
-    result_attendu = False  # pas d’erreur
-    assert result == result_attendu
+   grille_solution = [
+       ["1","2","3"],
+       ["4","5","6"],
+       ["7","8","9"]
+   ]
+   result = verifier_erreurs(grille, grille_solution)
 
-
-def test_valeur_trop_petite():
-    # arrange
-    valeur = 0
-    mini = 1
-    maxi = 9
-
-    # act
-    result = verifier_erreur(valeur, mini, maxi)
-
-    # assert
-    result_attendu = True   # erreur détectée
-    assert result == result_attendu
-
-
-def test_valeur_trop_grande():
-    # arrange
-    valeur = 20
-    mini = 1
-    maxi = 9
-
-    # act
-    result = verifier_erreur(valeur, mini, maxi)
-
-    # assert
-    result_attendu = True   # erreur détectée
-    assert result == result_attendu
+   assert result == False
 
 
 # GABRIEL
 
 def test_aucun_doublon():
-    # arrange
-    liste = [1, 2, 3, 4]
+    grille = [
+        ["1", "2", "3"],
+        ["4", "5", "6"],
+        ["7", "8", "9"]
+    ]
 
-    # act
-    result = verifier_doublons(liste)
+    result = verifier_doublons(grille)
 
-    # assert
-    result_attendu = False   # pas de doublon
-    assert result == result_attendu
+    assert result == False
 
 
 def test_un_doublon_present():
-    # arrange
-    liste = [1, 2, 2, 3]
+    grille = [
+        ["1", "2", "3"],
+        ["1", "5", "6"],
+        ["7", "8", "9"]
+    ]
 
-    # act
-    result = verifier_doublons(liste)
+    result = verifier_doublons(grille)
 
-    # assert
-    result_attendu = True    # doublon détecté
-    assert result == result_attendu
+    assert result == True
 
-
-def test_plusieurs_doublons():
-    # arrange
-    liste = [5, 5, 5]
-
-    # act
-    result = verifier_doublons(liste)
-
-    # assert
-    result_attendu = True
-    assert result == result_attendu
-# Simon
 
 def test_indice_random():
     #arranger
